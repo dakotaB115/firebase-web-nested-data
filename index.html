@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body> 
+        <h1 id='favFood'></h1>
+
+        <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+        apiKey: "AIzaSyDrxYsZ-vfRjq4l-Je3mm-u6jB75LEMLiY",
+        authDomain: "databasetesting-d7f2f.firebaseapp.com",
+        databaseURL: "https://databasetesting-d7f2f.firebaseio.com",
+        projectId: "databasetesting-d7f2f",
+        storageBucket: "databasetesting-d7f2f.appspot.com",
+        messagingSenderId: "645220274517"
+        };
+        firebase.initializeApp(config);
+
+        var favFood = document.getElementById('favFood');
+        var dbRef = firebase.database().ref('users/' + '0').child('Favorite food');
+        dbRef.on('value', snap=> favFood.innerText = snap.val())
+
+        </script>
+
+</body>
+</html>
